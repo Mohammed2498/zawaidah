@@ -3,6 +3,11 @@
         <label for="name"> اسم مقدم الطلب</label>
         <input value="{{ old('name', $order->name ?? '') }}" name="name" type="text" class="form-control"
             id="name" placeholder=" اسم مقدم الطلب">
+        @error('name')
+            <div class="alert alert-danger">
+                {{ $message }}
+            </div>
+        @enderror
     </div>
     <div class="form-group col-md-6">
         <label for="type">النوع</label>
@@ -13,6 +18,11 @@
             <option value="منتفع"{{ old('type', $order->type == 'منتفع' ? 'selected' : '') }} name='type'>منتفع
             </option>
         </select>
+        @error('type')
+            <div class="alert alert-danger">
+                {{ $message }}
+            </div>
+        @enderror
     </div>
 </div>
 <div class="form-row">
@@ -20,39 +30,73 @@
         <label for="id_number">رقم الهوية</label>
         <input value="{{ old('id_number', $order->id_number) }}" name="id_number" type="number" class="form-control"
             id="id_number" placeholder="رقم الهوية">
+        @error('id_number')
+            <div class="alert alert-danger">
+                {{ $message }}
+            </div>
+        @enderror
     </div>
     <div class="form-group col-md-6">
         <label for="phone"> رقم الجوال</label>
         <input value="{{ old('phone', $order->phone) }}" name="phone" type="number" class="form-control"
             id="phone" placeholder=" رقم الجوال">
+        @error('phone')
+            <div class="alert alert-danger">
+                {{ $message }}
+            </div>
+        @enderror
     </div>
 </div>
 <div class="form-group">
     <label for="address">العنوان</label>
     <input value="{{ old('address', $order->address) }}" name="address" type="text" class="form-control"
         id="address" placeholder="العنوان">
+    @error('address')
+        <div class="alert alert-danger">
+            {{ $message }}
+        </div>
+    @enderror
 </div>
 <div class="form-row">
     <div class="form-group col-md-6">
         <label for="piece_number"> رقم القسيمة</label>
         <input value="{{ old('piece_number', $order->piece_number) }}" name="piece_number" type="number"
             class="form-control" id="piece_number">
+        @error('piece_number')
+            <div class="alert alert-danger">
+                {{ $message }}
+            </div>
+        @enderror
     </div>
     <div class="form-group col-md-4">
         <label for="voucher_number">رقم القطعة</label>
         <input value="{{ old('voucher_number', $order->voucher_number) }}" name="voucher_number" type="number"
             class="form-control" id="voucher_number">
+        @error('voucher_number')
+            <div class="alert alert-danger">
+                {{ $message }}
+            </div>
+        @enderror
     </div>
 </div>
 <div class="form-group">
     <label for="file">المرفقات</label>
     <input value="{{ old('file', $order->file) }}" name="file" type="file" class="form-control" id="address"
         placeholder="المرفقات">
+    @error('file')
+        <div class="alert alert-danger">
+            {{ $message }}
+        </div>
+    @enderror
 </div>
 <div class="form-group">
     <label for="subject">الموضوع</label>
-    <textarea  name="subject" id="subject" class="form-control"
-        cols="100" rows="5">{{ old('subject', $order->subject) }}</textarea>
+    <textarea name="subject" id="subject" class="form-control" cols="100" rows="5">{{ old('subject', $order->subject) }}</textarea>
+    @error('subject')
+        <div class="alert alert-danger">
+            {{ $message }}
+        </div>
+    @enderror
 </div>
 {{-- <div class="form-group">
                 <div class="form-check">

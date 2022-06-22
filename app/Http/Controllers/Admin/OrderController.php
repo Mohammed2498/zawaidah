@@ -38,6 +38,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate($this->rules(), $this->messages());
         Order::create($request->all());
         return redirect()->route('orders.index')
             ->with('success', 'تم اضافة الطلب بنجاح');
@@ -93,5 +94,21 @@ class OrderController extends Controller
         $order->delete();
         return redirect()->route('orders.index')
             ->with('success', 'تم حذف الطلب بنجاح');
+    }
+    protected function rules()
+    {
+        return [
+            'name' => ['required'],
+            'phone' => ['required', 'digits:10'],
+            'id_number' => ['required', 'digits:9']
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'required' => 'يجب ادخال اسم الطلب',
+            'phone.digits' => 'يجب أن يكون رقم الجوال 10 أرقام',
+            'id_number.digits' => 'يجب أن يكون رقم الهوية 9 أرقام'
+        ];
     }
 }
